@@ -1,4 +1,5 @@
 import re
+from bag import Bag
 
 class Board(object):
     def __init__(self):
@@ -103,3 +104,11 @@ B = Board()
 B.read_from_text(text)
 print(B)
 B.find_all_words()
+
+bag = Bag()
+for row in B.board:
+    for col in row:
+        if col != '':
+            bag.remove(col)
+
+print(bag)
