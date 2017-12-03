@@ -1,6 +1,7 @@
 import re
 from bag import Bag
 
+
 class Board(object):
     def __init__(self):
         self.rows = 15
@@ -94,21 +95,5 @@ class Board(object):
             if word != '' and len(word) != 1:
                 all_words.append(word)
 
-        print(all_words)
+        return all_words
 
-
-with open('test_game.txt') as f:
-    text = f.read()
-
-B = Board()
-B.read_from_text(text)
-print(B)
-B.find_all_words()
-
-bag = Bag()
-for row in B.board:
-    for col in row:
-        if col != '':
-            bag.remove(col)
-
-print(bag)

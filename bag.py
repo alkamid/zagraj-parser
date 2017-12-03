@@ -1,5 +1,6 @@
 from collections import OrderedDict
 
+
 class Bag(object):
     def __init__(self, language='polish'):
         self.bag = OrderedDict()
@@ -21,7 +22,3 @@ class Bag(object):
                 bs += '{} {}\n'.format(let, self.bag[let]['left'])
 
         return bs
-                
-#b = Bag()
-#for key, val in b.bag.items():
-#    print(key, val)
