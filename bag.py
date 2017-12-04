@@ -15,6 +15,10 @@ class Bag(object):
     def remove(self, letter):
         self.bag[letter]['left'] -= 1
 
+    def remaining(self):
+        rem = {a: self.bag[a]['left'] for a in self.bag if self.bag[a]['left'] != 0}
+        return rem
+
     def __str__(self):
         bs = ''
         for let in self.bag.keys():
