@@ -1,6 +1,8 @@
 import re
 from bag import Bag
 
+LETTERS = 'ABCDEFGHIJKLMNOP'
+
 
 class Board(object):
     def __init__(self):
@@ -47,13 +49,15 @@ class Board(object):
         return wb
 
     def __str__(self):
-        bs = '    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5\n'
-        bs += '  +' + '-'*31 + '+\n'
-        for i, letter in enumerate('ABCDEFGHIJKLMNO'):
-            bs += letter + ' | '
+        bs = '     A B C D E F G H I J K L M N O\n'
+        bs += '   +' + '-'*31 + '+\n'
+        for i in range(15):
+            if i < 9:
+                bs += ' '
+            bs += '{} | '.format(i+1)
             bs += ' '.join(l if l != '' else ' ' for l in self.board[i])
             bs += ' |\n'
-        bs += '  +' + '-'*31 + '+\n'
+        bs += '   +' + '-'*31 + '+\n'
         return bs
 
     def read_from_text(self, text):
@@ -72,28 +76,34 @@ class Board(object):
         columns = [['' for i in range(self.rows)] for j in range(self.cols)]
         for i, row in enumerate(self.board):
             word = ''
+            start = [i + 1, LETTERS[0]]
             for j, l in enumerate(row):
+                if word == '':
+                    start[1] = LETTERS[j]
                 if l == '' and word != '':
                     if len(word) != 1:
-                        all_words.append(word)
+                        all_words.append((''.join(str(s) for s in start), word))
                     word = ''
                 elif l != '':
                     word += l
                 columns[j][i] = l
             if word != '' and len(word) != 1:
-                all_words.append(word)
+                all_words.append((''.join(str(s) for s in start), word))
             
-        for col in columns:
+        for i, col in enumerate(columns):
             word = ''
-            for l in col:
+            start = [LETTERS[i], 1]
+            for j, l in enumerate(col):
+                if word == '':
+                    start[1] = j+1
                 if l == '' and word != '':
                     if len(word) != 1:
-                        all_words.append(word)
+                        all_words.append((''.join(str(s) for s in start), word))
                     word = ''
                 elif l != '':
                     word += l
             if word != '' and len(word) != 1:
-                all_words.append(word)
+                all_words.append((''.join(str(s) for s in start), word))
 
         return all_words
 

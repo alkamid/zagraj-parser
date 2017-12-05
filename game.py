@@ -24,7 +24,7 @@ class Game:
     def parse_players(self, text):
         re_players = re.compile(r'Gracz [0-9]: (\w+)\n', re.UNICODE)
         s_players = re.findall(re_players, text)
-        if s_players == []:
+        if not s_players:
             raise ValueError('No players found!')
 
         return s_players
