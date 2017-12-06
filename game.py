@@ -16,10 +16,30 @@ class Game:
 
         self.board_final = Board()
         self.board_final.read_from_text(text)
+        self.board_final.find_all_words()
+        self.bag_final = Bag()
 
         self.moves_final = self.parse_moves(text)
+        self._calculate_final_bag()
+        # for m in self.moves_final:
+        #     print(m)
+
+        self.moves = []
+
+    def _calculate_final_bag(self):
+        for row in self.board_final.board:
+            for col in row:
+                if col != '':
+                    self.bag_final.remove(col)
+        final_move_count = 0
         for m in self.moves_final:
-            print(m)
+            if final_move_count == 2:
+                break
+            if m[1] == '*litery*':
+                final_move_count += 1
+                for let in m[0]:
+                    if let != ' ':
+                        self.bag_final.remove(let)
 
     def parse_players(self, text):
         re_players = re.compile(r'Gracz [0-9]: (\w+)\n', re.UNICODE)
@@ -30,6 +50,22 @@ class Game:
         return s_players
 
     def parse_moves(self, text):
-        re_moves = re.compile(r'([\w \t\/\*\-]*?(?:-|)[0-9]+\t(?:-|)[0-9]+)', re.UNICODE)
-        s_moves = re.findall(re_moves, text)
-        return [m.split('\t') for m in s_moves]
+        re_moves_p1 = re.compile(r'([\w \t\/\*\-]*?(?:-|)[0-9]+\t(?:-|)[0-9]+)\t', re.UNICODE)
+        re_moves_p2 = re.compile(r'[0-9]\t+(\D[\w \t\/\*\-]+?(?:-|)[0-9]+\t(?:-|)[0-9]+)\n', re.UNICODE)
+
+        s_moves_p1 = re.findall(re_moves_p1, text)
+        s_moves_p2 = re.findall(re_moves_p2, text)
+
+        moves = []
+
+        for i in range(max(len(s_moves_p1), len(s_moves_p2))):
+            try:
+                moves.append(s_moves_p1[i].strip().split('\t'))
+            except IndexError:
+                pass
+            try:
+                moves.append(s_moves_p2[i].strip().split('\t'))
+            except IndexError:
+                pass
+
+        return moves

@@ -11,6 +11,7 @@ class Board(object):
         self.board = [['' for i in range(self.rows)] for j in range(self.cols)]
         self.letter_bonuses = self._scrabble_letter_bonuses()
         self.word_bonuses = self._scrabble_word_bonuses()
+        self.words = []
 
     def _make_symmetric_bonus(self, array, value, row, col):
         if row > self.rows // 2 or col > self.cols // 2:
@@ -105,5 +106,5 @@ class Board(object):
             if word != '' and len(word) != 1:
                 all_words.append((''.join(str(s) for s in start), word))
 
-        return all_words
+        self.words = all_words
 
