@@ -30,11 +30,19 @@ def test_all_moves(test_game_text):
 def test_first_move(test_game_text):
 
     g = Game(test_game_text)
-    mv_raw = g.moves_final[0]
-    print(mv_raw)
+    #mv_raw = g.moves_final[0]
     print(g.board_final)
-    m = Move(rack=mv_raw[0], played_words=mv_raw[1], points=mv_raw[2],
-             current_board=g.board, final_board=g.board_final, player=g.player1)
+
+    print(g.board)
+    for m in g.moves_final:
+        print(m)
+
+    for mv_raw in g.moves_final:
+        if mv_raw[0] != '-' and '*' not in mv_raw[0]:
+            m = Move(rack=mv_raw[0], played_words=mv_raw[1], points=mv_raw[2],
+                     current_board=g.board, final_board=g.board_final, player=g.player1)
+            g.board.play_word(m.position, m.letters)
+    print(g.board)
 
     #print(m.position)
 

@@ -61,6 +61,23 @@ class Board(object):
         bs += '   +' + '-'*31 + '+\n'
         return bs
 
+    def play_word(self, pos, letters):
+        if pos[0] in 'ABCDEFGHIJKLMNO':
+            h = LETTERS.find(pos[0])
+            v = int(pos[1:])
+            orient = 'v'
+        else:
+            h = LETTERS.find(pos[-1])
+            v = int(pos[:-1])
+            orient = 'h'
+        for i, let in enumerate(letters):
+            if let != '.':
+                self.board[v][h] = let
+            if orient == 'v':
+                v += 1
+            else:
+                h += 1
+
     def read_from_text(self, text):
         re_board = re.compile(r'    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5\n  \+\-{31}\+\n(A \|[\w\s\|\=]*?\|)\n  \+', re.UNICODE)
         board_match = re.search(re_board, text).group(1)
