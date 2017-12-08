@@ -31,7 +31,6 @@ class Move:
                     return self.possible[matches.find(True)]
         return None
 
-
     def find_possible_moves(self):
         poss = []
         for wrd in self.final_board.words:
@@ -48,9 +47,9 @@ class Move:
                     idx += len(self.played_words[0])
                 else:
                     if wrd[0][0] in 'ABCDEFGHIJKLMNO':
-                        wrd[0][1:] = str(int(wrd[0][1:])+idx)
+                        wrd = (wrd[0][0] + str(int(wrd[0][1:])+idx), wrd[1])
                     else:
-                        wrd[0][-1] = chr(ord(wrd[0][-1])+idx)
+                        wrd = (wrd[0][:-1] + chr(ord(wrd[0][-1])+idx), wrd[1])
                     poss.append((wrd[0], wrd[1][idx:idx+len(self.played_words[0])]))
                     idx += len(self.played_words[0])
 

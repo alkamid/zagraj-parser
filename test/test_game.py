@@ -38,10 +38,12 @@ def test_first_move(test_game_text):
         print(m)
 
     for mv_raw in g.moves_final:
-        if mv_raw[0] != '-' and '*' not in mv_raw[0]:
+        if mv_raw[0] != '-' and '*' not in mv_raw[0] and '*' not in mv_raw[1]:
+            print(mv_raw)
             m = Move(rack=mv_raw[0], played_words=mv_raw[1], points=mv_raw[2],
                      current_board=g.board, final_board=g.board_final, player=g.player1)
             g.board.play_word(m.position, m.letters)
+            print(g.board)
     print(g.board)
 
     #print(m.position)

@@ -64,11 +64,11 @@ class Board(object):
     def play_word(self, pos, letters):
         if pos[0] in 'ABCDEFGHIJKLMNO':
             h = LETTERS.find(pos[0])
-            v = int(pos[1:])
+            v = int(pos[1:])-1
             orient = 'v'
         else:
             h = LETTERS.find(pos[-1])
-            v = int(pos[:-1])
+            v = int(pos[:-1])-1
             orient = 'h'
         for i, let in enumerate(letters):
             if let != '.':
