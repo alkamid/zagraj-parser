@@ -61,10 +61,12 @@ class Game:
         for i in range(max(len(s_moves_p1), len(s_moves_p2))):
             try:
                 moves.append(s_moves_p1[i].strip().split('\t'))
+                self.player1.final_moves.append(s_moves_p1[i].strip().split('\t'))
             except IndexError:
                 pass
             try:
                 moves.append(s_moves_p2[i].strip().split('\t'))
+                self.player2.final_moves.append(s_moves_p2[i].strip().split('\t'))
             except IndexError:
                 pass
 

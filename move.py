@@ -1,8 +1,10 @@
 LETTERS = 'ABCDEFGHIJKLMNO'
 from collections import Counter
+import pdb
 
 class Move:
-    def __init__(self, rack, played_words, points, current_board, final_board, player):
+    def __init__(self, rack, played_words, points, current_board, final_board, player,
+                 next_rack):
         self.position = None
         self.letters = None
         self.value = points
@@ -11,25 +13,85 @@ class Move:
         self.played_words = played_words.split('/')
         self.current_board = current_board
         self.final_board = final_board
-        self.possible = self.find_possible_moves()
-        resolved = self.resolve_ambiguity()
-        if resolved is None:
-            raise ValueError('Can\'t resolve a move')
+        self.next_rack = next_rack
+        self.possible = []
+        self.find_possible_moves()
+        if '_' in rack:
+            self.blank_guessed = False
         else:
-            self.position = resolved[0]
-            self.letters = resolved[2]
+            self.blank_guessed = True
+        if len(self.possible) > 1:
+            print(self.possible)
+            self.check_used_letters()
+            if len(self.possible) > 1:
+                self.resolve_ambiguity()
+                if len(self.possible) > 1:
+                    raise ValueError('Can\'t resolve a move')
+                else:
+                    self.position = self.possible[0][0]
+                    self.letters = self.possible[0][2]
+            else:
+                self.position = self.possible[0][0]
+                self.letters = self.possible[0][2]
+        else:
+            self.position = self.possible[0][0]
+            self.letters = self.possible[0][2]
+
+    def check_used_letters(self):
+        new_possible = []
+        for pos in self.possible:
+            let_left = list(self.rack)
+            let_played = [l for l in pos[2] if l != '.']
+            blanks = 0
+            try:
+                let_left.remove('_')
+                blanks += 1
+                try:
+                    let_left.remove('_')
+                    blanks += 1
+                except ValueError:
+                    pass
+            except ValueError:
+                pass
+
+            blanks_new = 0
+            for l in self.next_rack:
+                try:
+                    let_left.remove(l)
+                except ValueError:
+                    if l == '_':
+                        blanks_new += 1
+
+            invalid = False
+            for l in let_left:
+                try:
+                    let_played.remove(l)
+                except ValueError:
+                    invalid = True
+            if invalid:
+                continue
+
+            new_possible.append(pos)
+
+            # if len(let_played) == 0:
+            #     new_possible.append(pos)
+            # elif len(let_played) == 1 and blanks > 0:
+            #     new_possible.append(pos)
+            # elif len(let_played) == 2 and blanks == 2:
+            #     new_possible.append(pos)
+
+        self.possible = new_possible
 
     def resolve_ambiguity(self):
         if len(self.possible) == 1:
-            return self.possible[0]
+            pass
         else:
             if len(self.played_words) > 1:
                 matches = []
                 for poss in self.possible:
                     matches.append(Counter(poss[-1]) == Counter(self.played_words[1:]))
                 if sum(matches) == 1:
-                    return self.possible[matches.find(True)]
-        return None
+                    self.possible = self.possible[matches.index(True)]
 
     def find_possible_moves(self):
         poss = []
@@ -80,10 +142,10 @@ class Move:
                     idx_v += 1
                 else:
                     idx_h += 1
-            poss_new.append((wrd[0], wrd[1], letters_used, laterals))
+            if not all(ltr == '.' for ltr in letters_used):
+                poss_new.append((wrd[0], wrd[1], letters_used, laterals))
 
-        print(poss_new)
-        return poss_new
+        self.possible = poss_new
 
     def explore_lateral(self, idx_h, idx_v, orientation='h'):
         h = idx_h

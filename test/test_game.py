@@ -33,17 +33,38 @@ def test_first_move(test_game_text):
     #mv_raw = g.moves_final[0]
     print(g.board_final)
 
-    print(g.board)
-    for m in g.moves_final:
-        print(m)
-
-    for mv_raw in g.moves_final:
-        if mv_raw[0] != '-' and '*' not in mv_raw[0] and '*' not in mv_raw[1]:
-            print(mv_raw)
-            m = Move(rack=mv_raw[0], played_words=mv_raw[1], points=mv_raw[2],
-                     current_board=g.board, final_board=g.board_final, player=g.player1)
-            g.board.play_word(m.position, m.letters)
+    i = 0
+    while i < max(len(g.player1.final_moves), len(g.player2.final_moves)):
+        for player in (g.player1, g.player2):
+            print(player.final_moves[i])
+            # try:
+            mv_raw = player.final_moves[i]
+            if mv_raw[0] != '-' and '*' not in mv_raw[0] and '*' not in mv_raw[1]:
+                try:
+                    rack_next = player.final_moves[i+1][0]
+                except IndexError:
+                    rack_next = ''
+                m = Move(rack=mv_raw[0], played_words=mv_raw[1], points=mv_raw[2],
+                         current_board=g.board, final_board=g.board_final, player=player,
+                         next_rack=rack_next)
+                g.board.play_word(m.position, m.letters)
+                print(mv_raw)
+                print(m.position, m.letters)
+            # except IndexError:
+            #     print('ierrrrrrrrrrr')
+            #     continue
             print(g.board)
+        i += 1
+
+    assert g.board.board == g.board_final.board
+
+    # for mv_raw in g.moves_final:
+    #     if mv_raw[0] != '-' and '*' not in mv_raw[0] and '*' not in mv_raw[1]:
+    #         print(mv_raw)
+    #         m = Move(rack=mv_raw[0], played_words=mv_raw[1], points=mv_raw[2],
+    #                  current_board=g.board, final_board=g.board_final, player=g.player1)
+    #         g.board.play_word(m.position, m.letters)
+    #         print(g.board)
     print(g.board)
 
     #print(m.position)
