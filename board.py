@@ -12,6 +12,7 @@ class Board(object):
         self.letter_bonuses = self._scrabble_letter_bonuses()
         self.word_bonuses = self._scrabble_word_bonuses()
         self.words = []
+        self._get_letter_values('polish')
 
     def _make_symmetric_bonus(self, array, value, row, col):
         if row > self.rows // 2 or col > self.cols // 2:
@@ -60,6 +61,38 @@ class Board(object):
             bs += ' |\n'
         bs += '   +' + '-'*31 + '+\n'
         return bs
+
+    def _get_letter_values(self, language):
+        self.letter_values = {}
+        with open('{}.quackle_alphabet'.format(language)) as f:
+            for line in f.readlines():
+                lsp = line.split('\t')
+                if lsp[0] != 'blank':
+                    self.letter_values[lsp[0]] = int(lsp[2])
+
+    def calculate_points(self, possible_move):
+        pos = possible_move
+        words = [(pos[0], pos[1], pos[2])]
+        words += pos[3]
+        val = 0
+        for j, w in enumerate(words):
+            val_word = 0
+            multiplier = 1
+            h_init, v_init, orient = pos_to_idx(w[0])
+            for i in range(len(w[2])):
+                if orient == 'v':
+                    h = h_init
+                    v = v_init + i
+                else:
+                    h = h_init + i
+                    v = v_init
+                if w[2][i] != '.':
+                    multiplier *= self.word_bonuses[v][h]
+                    val_word += self.letter_values[w[1][i]]*self.letter_bonuses[v][h]
+                elif w[1][i].lower() != w[1][i]:
+                    val_word += self.letter_values[w[1][i]]
+            val += multiplier*val_word
+        return val
 
     def play_word(self, pos, letters):
         if pos[0] in 'ABCDEFGHIJKLMNO':
@@ -125,3 +158,12 @@ class Board(object):
 
         self.words = all_words
 
+def pos_to_idx(pos):
+    if pos[0] in 'ABCDEFGHIJKLMNO':
+        idx_h = LETTERS.find(pos[0])
+        idx_v = int(pos[1:]) - 1
+        return idx_h, idx_v, 'v'
+    else:
+        idx_h = LETTERS.find(pos[-1])
+        idx_v = int(pos[:-1]) - 1
+        return idx_h, idx_v, 'h'

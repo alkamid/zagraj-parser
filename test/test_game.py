@@ -44,9 +44,10 @@ def test_first_move(test_game_text):
                     rack_next = player.final_moves[i+1][0]
                 except IndexError:
                     rack_next = ''
-                m = Move(rack=mv_raw[0], played_words=mv_raw[1], points=mv_raw[2],
+                m = Move(rack=mv_raw[0], played_words=mv_raw[1], points_raw=mv_raw[2],
                          current_board=g.board, final_board=g.board_final, player=player,
                          next_rack=rack_next)
+                assert m.value == int(mv_raw[2])
                 g.board.play_word(m.position, m.letters)
                 print(mv_raw)
                 print(m.position, m.letters)

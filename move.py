@@ -3,11 +3,11 @@ from collections import Counter
 import pdb
 
 class Move:
-    def __init__(self, rack, played_words, points, current_board, final_board, player,
+    def __init__(self, rack, played_words, points_raw, current_board, final_board, player,
                  next_rack):
         self.position = None
         self.letters = None
-        self.value = points
+        self.value = 0
         self.player = player
         self.rack = rack
         self.played_words = played_words.split('/')
@@ -27,15 +27,12 @@ class Move:
                 self.resolve_ambiguity()
                 if len(self.possible) > 1:
                     raise ValueError('Can\'t resolve a move')
-                else:
-                    self.position = self.possible[0][0]
-                    self.letters = self.possible[0][2]
-            else:
-                self.position = self.possible[0][0]
-                self.letters = self.possible[0][2]
-        else:
-            self.position = self.possible[0][0]
-            self.letters = self.possible[0][2]
+
+        self.position = self.possible[0][0]
+        self.letters = self.possible[0][2]
+
+        print(self.possible)
+        self.value = self.current_board.calculate_points(self.possible[0])
 
     def check_used_letters(self):
         new_possible = []
@@ -89,7 +86,8 @@ class Move:
             if len(self.played_words) > 1:
                 matches = []
                 for poss in self.possible:
-                    matches.append(Counter(poss[-1]) == Counter(self.played_words[1:]))
+                    lateral_words = [a[1] for a in poss[3]]
+                    matches.append(Counter(lateral_words) == Counter(self.played_words[1:]))
                 if sum(matches) == 1:
                     self.possible = self.possible[matches.index(True)]
 
@@ -151,6 +149,8 @@ class Move:
         h = idx_h
         v = idx_v
         word = self.final_board.board[v][h]
+        let_used = (idx_to_position(idx_h, idx_v, 'v' if orientation == 'h' else 'h'),
+                    self.final_board.board[v][h])
         while h > 0 and v > 0:
             if orientation == 'h':
                 v -= 1
@@ -160,6 +160,8 @@ class Move:
                 break
             else:
                 word = self.current_board.board[v][h] + word
+                let_used = (idx_to_position(h, v, 'v' if orientation == 'h' else 'h'),
+                            '.' + let_used[1])
         h = idx_h
         v = idx_v
         while h < 14 and v < 14:
@@ -171,8 +173,17 @@ class Move:
                 break
             else:
                 word += self.current_board.board[v][h]
-
+                let_used = (let_used[0], let_used[1] + '.')
         if len(word) > 1:
-            return word
+            return let_used[0], word, let_used[1]
         else:
             return None
+
+
+def idx_to_position(idx_h, idx_v, orientation):
+    if orientation == 'h':
+        return str(idx_v+1) + LETTERS[idx_h]
+    elif orientation == 'v':
+        return LETTERS[idx_h] + str(idx_v+1)
+    else:
+        raise ValueError('Invalid orientation: {} (chose v or h)'.format(orientation))
