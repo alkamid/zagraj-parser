@@ -25,14 +25,30 @@ class Move:
             self.check_used_letters()
             if len(self.possible) > 1:
                 self.resolve_ambiguity()
-                if len(self.possible) > 1:
-                    raise ValueError('Can\'t resolve a move')
+                if (len(self.possible) > 1 or
+                        self.current_board.calculate_points(self.possible[0]) != points_raw):
+                    self.resolve_blanks()
+                    if (len(self.possible) > 1 or
+                            self.current_board.calculate_points(self.possible[0]) != points_raw):
+                        raise ValueError('Can\'t resolve a move')
 
         self.position = self.possible[0][0]
         self.letters = self.possible[0][2]
 
         print(self.possible)
         self.value = self.current_board.calculate_points(self.possible[0])
+
+    def resolve_blanks(self):
+        new_pos = []
+        for pos in self.possible:
+            gb = self.guess_blanks(pos)
+            if gb is not None:
+                new_pos.append(gb)
+
+        self.possible = new_pos
+
+    def guess_blanks(self):
+        return None
 
     def check_used_letters(self):
         new_possible = []
