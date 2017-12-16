@@ -57,7 +57,7 @@ def test_first_move(test_game_text):
             print(g.board)
         i += 1
 
-    assert g.board.board == g.board_final.board
+    assert g.board.board_capital() == g.board_final.board
 
     # for mv_raw in g.moves_final:
     #     if mv_raw[0] != '-' and '*' not in mv_raw[0] and '*' not in mv_raw[1]:

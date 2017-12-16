@@ -50,6 +50,13 @@ class Board(object):
         wb = msb(wb, 2, 7, 7)
         return wb
 
+    def board_capital(self):
+        cap_board = self.board
+        for i in range(15):
+            for j in range(15):
+                cap_board[i][j] = cap_board[i][j].upper()
+        return cap_board
+
     def __str__(self):
         bs = '     A B C D E F G H I J K L M N O\n'
         bs += '   +' + '-'*31 + '+\n'
@@ -88,10 +95,13 @@ class Board(object):
                     v = v_init
                 if w[2][i] != '.':
                     multiplier *= self.word_bonuses[v][h]
-                    val_word += self.letter_values[w[1][i]]*self.letter_bonuses[v][h]
+                    if w[2][i].lower() != w[2][i]:
+                        val_word += self.letter_values[w[1][i]]*self.letter_bonuses[v][h]
                 elif w[1][i].lower() != w[1][i]:
                     val_word += self.letter_values[w[1][i]]
+            print('multi', multiplier, val_word)
             val += multiplier*val_word
+            print(w, val)
         return val
 
     def play_word(self, pos, letters):
@@ -157,6 +167,7 @@ class Board(object):
                 all_words.append((''.join(str(s) for s in start), word))
 
         self.words = all_words
+
 
 def pos_to_idx(pos):
     if pos[0] in 'ABCDEFGHIJKLMNO':

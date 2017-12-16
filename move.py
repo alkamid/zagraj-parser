@@ -1,6 +1,7 @@
 LETTERS = 'ABCDEFGHIJKLMNO'
 from collections import Counter
 import pdb
+from board import pos_to_idx
 
 class Move:
     def __init__(self, rack, played_words, points_raw, current_board, final_board, player,
@@ -8,6 +9,7 @@ class Move:
         self.position = None
         self.letters = None
         self.value = 0
+        self.points_raw = int(points_raw)
         self.player = player
         self.rack = rack
         self.played_words = played_words.split('/')
@@ -20,16 +22,18 @@ class Move:
             self.blank_guessed = False
         else:
             self.blank_guessed = True
-        if len(self.possible) > 1:
-            print(self.possible)
+        if (len(self.possible) > 1 or
+                        self.current_board.calculate_points(self.possible[0]) != self.points_raw):
+            # pdb.set_trace()
             self.check_used_letters()
-            if len(self.possible) > 1:
+            if (len(self.possible) > 1
+                    or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
                 self.resolve_ambiguity()
-                if (len(self.possible) > 1 or
-                        self.current_board.calculate_points(self.possible[0]) != points_raw):
+                if (len(self.possible) > 1
+                    or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
                     self.resolve_blanks()
-                    if (len(self.possible) > 1 or
-                            self.current_board.calculate_points(self.possible[0]) != points_raw):
+                    if (len(self.possible) > 1
+                       or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
                         raise ValueError('Can\'t resolve a move')
 
         self.position = self.possible[0][0]
@@ -43,12 +47,73 @@ class Move:
         for pos in self.possible:
             gb = self.guess_blanks(pos)
             if gb is not None:
-                new_pos.append(gb)
+                new_pos += gb
 
         self.possible = new_pos
 
-    def guess_blanks(self):
-        return None
+    def guess_blanks(self, possible):
+        count_played = Counter(possible[2].replace('.', ''))
+        count_rack = Counter(self.rack)
+
+        used_blanks = 0
+        diff = []
+        for char in count_played:
+            let_diff = count_played[char] - count_rack.get(char, 0)
+            if let_diff > 0:
+                used_blanks += let_diff
+                diff += [char, ]
+
+        assert 1 <= len(diff) <= 2
+        possible_played_temp = []
+        for i, _ in enumerate(possible[2]):
+            if possible[2][i] == diff[0]:
+                new_played = possible[2][:i] + possible[2][i].lower()
+                if i < len(possible[2])-1:
+                    new_played += possible[2][i+1:]
+                possible_played_temp += (possible[0], possible[1], new_played),
+
+        candidates = []
+        if used_blanks == 2:
+            for ppt in possible_played_temp:
+                for i, _ in enumerate(ppt[2]):
+                    if ppt[2][i] == diff[1]:
+                        new_played = possible[2][:i] + possible[2][i].lower()
+                        if i < len(possible[2])-1:
+                            new_played += possible[2][i + 1:]
+                        candidates += (ppt[0], ppt[1], new_played, [])
+        else:
+            candidates = possible_played_temp
+
+        new_possible_moves = []
+        for cand in candidates:
+            laterals = []
+            h_init, v_init, orient = pos_to_idx(cand[0])
+            for i, l in enumerate(cand[2]):
+                if orient == 'v':
+                    v = v_init + i
+                    h = h_init
+                else:
+                    v = v_init
+                    h = h_init + i
+                if l != '.':
+                    lateral = self.explore_lateral(h, v,
+                                                   starting_letter=l,
+                                                   orientation=orient)
+                    if lateral is not None:
+                        laterals.append(lateral)
+
+            new_possible_moves += (*cand[:3], laterals),
+        print('npm', new_possible_moves)
+
+        new_possible_moves_score_agrees = []
+        for npm in new_possible_moves:
+            print('score agrees', self.current_board.calculate_points(npm))
+            if self.current_board.calculate_points(npm) == self.points_raw:
+                new_possible_moves_score_agrees.append(npm)
+        if len(new_possible_moves_score_agrees) == 0:
+            return None
+        else:
+            return new_possible_moves_score_agrees
 
     def check_used_letters(self):
         new_possible = []
@@ -149,7 +214,7 @@ class Move:
                     letters_used += '.'
                 else:
                     letters_used += let
-                    lateral = self.explore_lateral(idx_h, idx_v, orient)
+                    lateral = self.explore_lateral(idx_h, idx_v, orientation=orient)
                     if lateral is not None:
                         laterals.append(lateral)
                 if orient == 'v':
@@ -161,12 +226,15 @@ class Move:
 
         self.possible = poss_new
 
-    def explore_lateral(self, idx_h, idx_v, orientation='h'):
+    def explore_lateral(self, idx_h, idx_v, starting_letter=None, orientation='h'):
         h = idx_h
         v = idx_v
-        word = self.final_board.board[v][h]
+        if starting_letter is None:
+            word = self.final_board.board[v][h]
+        else:
+            word = starting_letter
         let_used = (idx_to_position(idx_h, idx_v, 'v' if orientation == 'h' else 'h'),
-                    self.final_board.board[v][h])
+                    word)
         while h > 0 and v > 0:
             if orientation == 'h':
                 v -= 1
@@ -203,3 +271,7 @@ def idx_to_position(idx_h, idx_v, orientation):
         return LETTERS[idx_h] + str(idx_v+1)
     else:
         raise ValueError('Invalid orientation: {} (chose v or h)'.format(orientation))
+
+
+def move_iterator(position, board):
+    yield 1
