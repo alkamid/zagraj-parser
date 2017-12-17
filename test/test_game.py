@@ -36,27 +36,29 @@ def test_first_move(test_game_text):
     i = 0
     while i < max(len(g.player1.final_moves), len(g.player2.final_moves)):
         for player in (g.player1, g.player2):
-            print(player.final_moves[i])
+            # print(player.final_moves[i])
             # try:
             mv_raw = player.final_moves[i]
-            if mv_raw[0] != '-' and '*' not in mv_raw[0] and '*' not in mv_raw[1]:
-                try:
-                    rack_next = player.final_moves[i+1][0]
-                except IndexError:
-                    rack_next = ''
-                m = Move(rack=mv_raw[0], played_words=mv_raw[1], points_raw=mv_raw[2],
-                         current_board=g.board, final_board=g.board_final, player=player,
-                         next_rack=rack_next)
-                assert m.value == int(mv_raw[2])
-                g.board.play_word(m.position, m.letters)
-                print(mv_raw)
-                print(m.position, m.letters)
+            print(mv_raw)
+            try:
+                rack_next = player.final_moves[i+1][0]
+            except IndexError:
+                rack_next = ''
+            m = Move(rack=mv_raw[0], played_words=mv_raw[1], points_raw=mv_raw[-2],
+                     current_board=g.board, final_board=g.board_final, player=player,
+                     next_rack=rack_next)
+            assert m.value == int(mv_raw[-2])
+            g.play_word(m)
+                #print(mv_raw)
+                #print(m.position, m.letters)
             # except IndexError:
             #     print('ierrrrrrrrrrr')
             #     continue
-            print(g.board)
+
+            #print(g.board)
         i += 1
 
+    print(g.player1.points, g.player2.points)
     assert g.board.board_capital() == g.board_final.board
 
     # for mv_raw in g.moves_final:

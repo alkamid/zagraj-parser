@@ -8,6 +8,8 @@ class Move:
                  next_rack):
         self.position = None
         self.letters = None
+        self.move_type = None
+        self.exchanged_letters = None
         self.value = 0
         self.points_raw = int(points_raw)
         self.player = player
@@ -17,30 +19,42 @@ class Move:
         self.final_board = final_board
         self.next_rack = next_rack
         self.possible = []
-        self.find_possible_moves()
-        if '_' in rack:
-            self.blank_guessed = False
-        else:
-            self.blank_guessed = True
-        if (len(self.possible) > 1 or
-                        self.current_board.calculate_points(self.possible[0]) != self.points_raw):
-            # pdb.set_trace()
-            self.check_used_letters()
-            if (len(self.possible) > 1
-                    or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
-                self.resolve_ambiguity()
+        self.determine_move_type()
+        print(self.move_type)
+        if self.move_type not in ['exchange', 'pass', 'end']:
+            self.find_possible_moves()
+            if (len(self.possible) > 1 or
+                            self.current_board.calculate_points(self.possible[0]) != self.points_raw):
+                # pdb.set_trace()
+                print(self.current_board.calculate_points(self.possible[0]), self.points_raw)
+                self.check_used_letters()
                 if (len(self.possible) > 1
-                    or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
-                    self.resolve_blanks()
+                        or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
+                    self.resolve_ambiguity()
                     if (len(self.possible) > 1
-                       or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
-                        raise ValueError('Can\'t resolve a move')
+                        or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
+                        self.resolve_blanks()
+                        if (len(self.possible) > 1
+                           or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
+                            raise ValueError('Can\'t resolve a move')
 
-        self.position = self.possible[0][0]
-        self.letters = self.possible[0][2]
+            self.position = self.possible[0][0]
+            self.letters = self.possible[0][2]
 
-        print(self.possible)
-        self.value = self.current_board.calculate_points(self.possible[0])
+            self.value = self.current_board.calculate_points(self.possible[0])
+
+    def determine_move_type(self):
+        pw = self.played_words[0]
+        if '*wymiana*' in pw:
+            self.exchanged_letters = pw.split(' ')[1]
+            self.move_type = 'exchange'
+            self.value = 0
+        elif '*pas*' in pw or pw == '-':
+            self.move_type = 'pass'
+            self.value = 0
+        elif '*litery*' in [self.rack, pw]:
+            self.move_type = 'end'
+            self.value = self.points_raw
 
     def resolve_blanks(self):
         new_pos = []
@@ -103,11 +117,9 @@ class Move:
                         laterals.append(lateral)
 
             new_possible_moves += (*cand[:3], laterals),
-        print('npm', new_possible_moves)
 
         new_possible_moves_score_agrees = []
         for npm in new_possible_moves:
-            print('score agrees', self.current_board.calculate_points(npm))
             if self.current_board.calculate_points(npm) == self.points_raw:
                 new_possible_moves_score_agrees.append(npm)
         if len(new_possible_moves_score_agrees) == 0:
@@ -150,13 +162,6 @@ class Move:
                 continue
 
             new_possible.append(pos)
-
-            # if len(let_played) == 0:
-            #     new_possible.append(pos)
-            # elif len(let_played) == 1 and blanks > 0:
-            #     new_possible.append(pos)
-            # elif len(let_played) == 2 and blanks == 2:
-            #     new_possible.append(pos)
 
         self.possible = new_possible
 

@@ -99,12 +99,10 @@ class Board(object):
                         val_word += self.letter_values[w[1][i]]*self.letter_bonuses[v][h]
                 elif w[1][i].lower() != w[1][i]:
                     val_word += self.letter_values[w[1][i]]
-            print('multi', multiplier, val_word)
             val += multiplier*val_word
-            print(w, val)
         return val
 
-    def play_word(self, pos, letters):
+    def put_word(self, pos, letters):
         if pos[0] in 'ABCDEFGHIJKLMNO':
             h = LETTERS.find(pos[0])
             v = int(pos[1:])-1

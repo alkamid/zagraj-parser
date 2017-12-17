@@ -41,6 +41,14 @@ class Game:
                     if let != ' ':
                         self.bag_final.remove(let)
 
+    def play_word(self, move):
+        if move.move_type not in ['exchange', 'pass', 'end']:
+            self.board.put_word(move.position, move.letters)
+        elif move.move_type != 'end':
+            for player in [self.player1, self.player2]:
+                if move.player == player:
+                    player.points += move.value
+
     def parse_players(self, text):
         re_players = re.compile(r'Gracz [0-9]: (\w+)\n', re.UNICODE)
         s_players = re.findall(re_players, text)
