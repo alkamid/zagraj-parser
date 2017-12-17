@@ -1,0 +1,49 @@
+Ten list zostal wysłany przez system gier on-line ZAGRAJ PL
+Zapis partii SCRABBLE
+Data: Thu Aug 03 20:15:02 CEST 2017
+Miejsce: Server ZAGRAJ.PL, plansza 4
+Typ: turniejowa
+Czas: 5 min
+Gracz 1: alkamid
+Ranking: 104
+Gracz 2: __matahari__
+Ranking: 130
+Wynik: 337: 309
+
+
+    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+  +-------------------------------+
+A |             A K I A   G A S I |
+B |               L       D   Z   |
+C |             M I Ś     Y   P E |
+D |               M       B   E Ń |
+E |     S         O S   P A R Ć   |
+F |     T           T   E Ł       |
+G |     E       K   R   O   H     |
+H | Z I P     N A G A N N Y M I   |
+I |     Ó   C   Ź   Ż   I     K   |
+J |   Z W A L A       F E     R O |
+K |         Ą   H O J E         B |
+L |         C Z A D   N   W   E Ł |
+M |   W S Z A   U   C Y N Y   L U |
+N |                       J   I D |
+O |               W R O N Ę   T O |
+  +-------------------------------+
+alkamid	__matahari__
+Litery	Ruch	Pkt	Suma	Litery	Ruch	Pkt	Suma
+YEEŹIOP	*wymiana* OŹY	0	0	_AGNN_Y	NAGANNY/*premia*	70	70
+EEEOIAP	PEONIE	12	12	MRANSIH	HM/NAGANNYM	18	88
+BKEGDAY	GDYBA/PA	31	43	KRANSII	GASI	18	106
+CKEĆŹYZ	KAŹ	23	66	KRHNEEI	IKR/NAGANNYMI	17	123
+CPEĆOYZ	SZPEĆ	22	88	LJHNEEF	FEN/FE	33	156
+CNYJOYO	CYNY/FENY	18	106	LJHIŚEO	HOJE	8	164
+BŁDJOUO	OBŁUDO/RO	50	156	LWRIŚET	ELIT/EŁ/LU/ID/TO	30	194
+AZDJLWĘ	WYJĘ	32	188	RWRTŚON	WRONĘ	27	221
+AZDŁLCC	CZAD/HA/OD	17	205	RŻRTŚWS	STRAŻ	15	236
+ĄPKŁLLC	EŁ/GDYBAŁ	18	223	ZARAŚWS	PARĆ	10	246
+ĄPKTLLC	CLĄC	22	245	ZAAAŚWS	WSZA/CLĄCA	20	266
+ŃPKTELM	EŃ/PE/EŃ	33	278	ZAAAŚWA	ZWALA	10	276
+OPKTILM	KLIMO/OS	32	310	IZIAŚMA	MIŚ	15	291
+SPITUÓE	STEPÓW	18	328	IZIA A	ZIP	12	303
+I U	HAU	10	338	IA A	AKIA	5	308
+I	*litery*	-1	337		*litery*	1	309

@@ -14,23 +14,27 @@ class Move:
         self.points_raw = int(points_raw)
         self.player = player
         self.rack = rack
+        self.bingo = False
         self.played_words = played_words.split('/')
+        if self.played_words[-1] == '*premia*':
+            del self.played_words[-1]
+            self.bingo = True
+        print(self.played_words)
         self.current_board = current_board
         self.final_board = final_board
         self.next_rack = next_rack
         self.possible = []
         self.determine_move_type()
-        print(self.move_type)
         if self.move_type not in ['exchange', 'pass', 'end']:
             self.find_possible_moves()
             if (len(self.possible) > 1 or
                             self.current_board.calculate_points(self.possible[0]) != self.points_raw):
                 # pdb.set_trace()
-                print(self.current_board.calculate_points(self.possible[0]), self.points_raw)
                 self.check_used_letters()
                 if (len(self.possible) > 1
                         or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
                     self.resolve_ambiguity()
+                    print(self.possible)
                     if (len(self.possible) > 1
                         or self.current_board.calculate_points(self.possible[0]) != self.points_raw):
                         self.resolve_blanks()
@@ -75,7 +79,7 @@ class Move:
             let_diff = count_played[char] - count_rack.get(char, 0)
             if let_diff > 0:
                 used_blanks += let_diff
-                diff += [char, ]
+                diff += [char, ]*let_diff
 
         assert 1 <= len(diff) <= 2
         possible_played_temp = []
@@ -91,10 +95,10 @@ class Move:
             for ppt in possible_played_temp:
                 for i, _ in enumerate(ppt[2]):
                     if ppt[2][i] == diff[1]:
-                        new_played = possible[2][:i] + possible[2][i].lower()
-                        if i < len(possible[2])-1:
-                            new_played += possible[2][i + 1:]
-                        candidates += (ppt[0], ppt[1], new_played, [])
+                        new_played = ppt[2][:i] + ppt[2][i].lower()
+                        if i < len(ppt[2])-1:
+                            new_played += ppt[2][i + 1:]
+                        candidates += (ppt[0], ppt[1], new_played, []),
         else:
             candidates = possible_played_temp
 

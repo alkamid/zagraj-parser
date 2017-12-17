@@ -82,6 +82,7 @@ class Board(object):
         words = [(pos[0], pos[1], pos[2])]
         words += pos[3]
         val = 0
+        used_letters = 0
         for j, w in enumerate(words):
             val_word = 0
             multiplier = 1
@@ -94,12 +95,16 @@ class Board(object):
                     h = h_init + i
                     v = v_init
                 if w[2][i] != '.':
+                    if j == 0:
+                        used_letters += 1
                     multiplier *= self.word_bonuses[v][h]
                     if w[2][i].lower() != w[2][i]:
                         val_word += self.letter_values[w[1][i]]*self.letter_bonuses[v][h]
                 elif w[1][i].lower() != w[1][i]:
                     val_word += self.letter_values[w[1][i]]
             val += multiplier*val_word
+            if used_letters == 7:
+                val += 50
         return val
 
     def put_word(self, pos, letters):

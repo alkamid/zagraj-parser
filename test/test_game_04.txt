@@ -1,0 +1,54 @@
+Ten list zostal wysłany przez system gier on-line ZAGRAJ PL
+Zapis partii SCRABBLE
+Data: Mon Jul 17 21:00:06 CEST 2017
+Miejsce: Server ZAGRAJ.PL, plansza 16
+Typ: turniejowa
+Czas: 7 min.
+Gracz 1: alkamid
+Ranking: 102
+Gracz 2: ciarna
+Ranking: 93
+Wynik: 373: 156
+
+    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+  +-------------------------------+
+A |       H A R N A S I         B |
+B |                   M I O D K I |
+C |                   A     O   J |
+D |     P A T       E Ł   N   S E |
+E |   T   C A R         P I   K   |
+F |   A C Z   O Ż       H E L I   |
+G |   G       Z   U T N I J   Ś   |
+H |         B L E F Y             |
+I |           A                   |
+J |           Z                   |
+K |   R     K Ł Ó D               |
+L | W Y       E   I               |
+M |   S P L A M   E Ń             |
+N |             O R               |
+O |   W Y W I A N Y M             |
+  +-------------------------------+
+alkamid	ciarna
+Litery	Ruch	Pkt	Suma	Litery	Ruch	Pkt	Suma
+L_FZBEŁ	BLEF	22	22	_ÓNTIUJ	UTNIJ/UF	20	20
+O_ZZERŁ	ROZLAZŁE/*premia*	64	86	_ÓWŚKKD	KŁÓD	24	44
+MEILRYI	DIERY	24	110	_NWŚIKY	*strata*	0	44
+MDLLAPI	PLAM/ROZLAZŁEM	26	136	_NWŚIKY	BLEFY/TY	17	61
+HDELKJI	HEL/HI/EJ	14	150	_NWŚIKS	SKIŚ/HELI	20	81
+IDEBKJI	BIJE/SE	30	180	_NWIWMY	NIEJ	12	93
+IDSOKMI	MIODKI	26	206	_NWAWMY	WYWIANYM/*premia*	61	154
+NHSARAI	HARNASI/IM/*premia*	89	295	CAAWĘCŃ	CAR	8	162
+PTYARES	PI/PHI	18	313	ĄŹAWĘCŃ	IMA	4	166
+WTYARES	*strata*	0	313	ĄŹSWĘCŃ	EŃ	15	181
+WTYARES	RYS/SPLAM	12	325	ĄŹSWĘCĆ	WY	4	185
+WTZAOEŻ	OŻ	6	331	ĄŹSZĘCĆ	*koniec czasu*	0	185
+WTZAOEA	ACZ	8	339	-	-	0	185
+WTŁEOEA	*strata*	0	339	ĄŹSZĘCĆ	*litery*	-29	156
+WTŁEOEA	EŁ/IMAŁ	11	350
+WTCPOEA	ACZ	6	356
+WTOPOEN	OR/ON	4	360
+WTOPOEN	DO	6	366
+WTTPOEN	PAT/TA	8	374
+WOTGOEN	TAG	6	380
+WOZAOEN	*koniec czasu*	0	380
+WOZAOEN	*litery*	-7	373

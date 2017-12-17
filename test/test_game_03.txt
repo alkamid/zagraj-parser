@@ -1,0 +1,51 @@
+Ten list zostal wysłany przez system gier on-line ZAGRAJ PL
+Zapis partii SCRABBLE
+Data: Thu Aug 03 20:30:01 CEST 2017
+Miejsce: Server ZAGRAJ.PL, plansza 2
+Typ: turniejowa
+Czas: 5 min
+Gracz 1: alkamid
+Ranking: 105
+Gracz 2: pxbxpxbx
+Ranking: 148
+Wynik: 363: 291
+
+
+    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+  +-------------------------------+
+A |                             K |
+B |   N I P                   P O |
+C |     D I P                 A L |
+D |       C             I Ż   N I |
+E |     C Z U Ł   Z A M I E C I   |
+F |     H         E R Y       Ą   |
+G |   M E E   K A T   M Ó J       |
+H |   S   Ś W I R Y       O B A J |
+I |   Z     E T A     W A D       |
+J | W Y       Ę           K   F   |
+K | G               H   B U L I Ł |
+L | R     I Z O S T E R A   O   O |
+M | Y         Ń   O N   Ć   S   W |
+N | Ź             G             C |
+O |             D A L S Z E     A |
+  +-------------------------------+
+alkamid	pxbxpxbx
+Litery	Ruch	Pkt	Suma	Litery	Ruch	Pkt	Suma
+ÓWYKRIŚ	ŚWIRY	30	30	EAEIE_Z	EE/EŚ	9	9
+ÓOAKATN	KAT/KI/AR/TY	16	46	HAMIE_Z	HE	4	13
+ÓOERAYN	ERY/ETY	13	59	IAMIE_Z	ZAMIECI/ZETY/AR/MY/*premia*	76	89
+ÓOPĄAĘN	PANIĄ	40	99	OCIŁLKU	KOLI/PO/AL/NI	30	119
+ÓOŃETĘJ	KITĘ	20	119	ACIŁZAU	CZUŁ/CHE	24	143
+ÓOŃEMSJ	MÓJ/MYM	16	135	AAIOAAŻ	IŻ/II/ŻE	26	169
+SOŃECSŁ	*wymiana* CSŁŃ	0	135	AABOAAE	ETA/WE/ARA	11	180
+DOKEUS_	JODKU	12	147	ĆABOAAO	BAĆ/BU	32	212
+ZTOERS_	IZOSTERA/*premia*	70	217	CJBOAAO	OBAJ	24	236
+OSSWMLZ	LOS/BUL	16	233	CGIOWAO	TOGA	21	257
+HLSWMYZ	MSZY/MEE	14	247	CFIWWŁO	FI/BULI	25	282
+HLZWNNE	*strata*	0	247	CANWWŁO	*pas*	0	282
+HLZWNNE	HEN/ON	9	256	CANWWŁO	ŁOWCA/BULIŁ	39	321
+DLZWSNE	DALSZE	9	265	PRNŹWGY	WGRYŹ/WY	20	341
+ICPWANI	PICZ	12	277	P NDŃN	OŃ	8	349
+WANI	NIP	8	285	P ND N	DIP/ID	16	365
+WA	WAD	4	289	-	-	0	365
+*litery*	2	291	N N	*litery*	-2	363
