@@ -25,6 +25,7 @@ class Game:
         #     print(m)
 
         self.moves = []
+        self.first_move = True
 
     def _calculate_final_bag(self):
         for row in self.board_final.board:
@@ -42,8 +43,9 @@ class Game:
                         self.bag_final.remove(let)
 
     def play_word(self, move):
-        if move.move_type not in ['exchange', 'pass', 'end']:
+        if move.move_type not in ['exchange', 'pass', 'end', 'challenge']:
             self.board.put_word(move.position, move.letters)
+            self.first_move = False
         elif move.move_type != 'end':
             for player in [self.player1, self.player2]:
                 if move.player == player:

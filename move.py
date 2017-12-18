@@ -5,7 +5,7 @@ from board import pos_to_idx
 
 class Move:
     def __init__(self, rack, played_words, points_raw, current_board, final_board, player,
-                 next_rack):
+                 next_rack, first_move):
         self.position = None
         self.letters = None
         self.move_type = None
@@ -15,6 +15,7 @@ class Move:
         self.player = player
         self.rack = rack
         self.bingo = False
+        self.first_move = first_move
         self.played_words = played_words.split('/')
         if self.played_words[-1] == '*premia*':
             del self.played_words[-1]
@@ -25,7 +26,7 @@ class Move:
         self.next_rack = next_rack
         self.possible = []
         self.determine_move_type()
-        if self.move_type not in ['exchange', 'pass', 'end']:
+        if self.move_type not in ['exchange', 'pass', 'end', 'challenge']:
             self.find_possible_moves()
             if (len(self.possible) > 1 or
                             self.current_board.calculate_points(self.possible[0]) != self.points_raw):
@@ -55,6 +56,9 @@ class Move:
             self.value = 0
         elif '*pas*' in pw or pw == '-':
             self.move_type = 'pass'
+            self.value = 0
+        elif pw == '*strata*':
+            self.move_type = 'challenge'
             self.value = 0
         elif '*litery*' in [self.rack, pw]:
             self.move_type = 'end'
@@ -233,7 +237,17 @@ class Move:
             if not all(ltr == '.' for ltr in letters_used):
                 poss_new.append((wrd[0], wrd[1], letters_used, laterals))
 
-        self.possible = poss_new
+        poss_final = []
+        for pn in poss_new:
+            all_words = [pn[2], *(a[2] for a in pn[3])]
+            hooked = any('.' in w for w in all_words)
+            if not self.first_move and not hooked:
+                continue
+            elif self.first_move and hooked:
+                continue
+            else:
+                poss_final.append(pn)
+        self.possible = poss_final
 
     def explore_lateral(self, idx_h, idx_v, starting_letter=None, orientation='h'):
         h = idx_h

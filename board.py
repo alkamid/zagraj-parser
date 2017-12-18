@@ -103,8 +103,8 @@ class Board(object):
                 elif w[1][i].lower() != w[1][i]:
                     val_word += self.letter_values[w[1][i]]
             val += multiplier*val_word
-            if used_letters == 7:
-                val += 50
+        if used_letters == 7:
+            val += 50
         return val
 
     def put_word(self, pos, letters):

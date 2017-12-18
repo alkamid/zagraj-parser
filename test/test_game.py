@@ -52,7 +52,7 @@ def test_first_move(test_game_text):
                     rack_next = ''
                 m = Move(rack=mv_raw[0], played_words=mv_raw[1], points_raw=mv_raw[-2],
                          current_board=g.board, final_board=g.board_final, player=player,
-                         next_rack=rack_next)
+                         next_rack=rack_next, first_move=g.first_move)
                 assert m.value == int(mv_raw[-2])
                 g.play_word(m)
                     #print(mv_raw)
