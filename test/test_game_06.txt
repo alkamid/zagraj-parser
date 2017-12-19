@@ -1,0 +1,46 @@
+Ten list zostal wysłany przez system gier on-line ZAGRAJ PL
+Zapis partii SCRABBLE
+Data: Sat Oct 08 16:49:18 CEST 2016
+Miejsce: Server ZAGRAJ.PL, plansza 19
+Typ: rankingowa
+Czas: 10 min
+Gracz 1: jolac
+Ranking: 164
+Gracz 2: alkamid
+Ranking: 106
+Wynik: 398: 439
+
+    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+  +-------------------------------+
+A |       G U Z I E               |
+B |               H O J       W   |
+C |             R   B A S E N Y   |
+D |     B O K S E R A   P     S   |
+E |   N     Ó           A     U   |
+F |   I     Ł         Ź L I   Ń   |
+G | R E P               E         |
+H |   Z           P A C N Ę       |
+I |   G           O   I I   M     |
+J |   O       W   W   F E T Ą     |
+K |   D Z I K I   I     M A Ć     |
+L |   Y   D O Ś L E       Ż     M |
+M |     H O T     W             I |
+N |           C Z A N K A       Ł |
+O | N A D A L I   J     R Y S C Y |
+  +-------------------------------+
+jolac	alkamid
+Litery	Ruch	Pkt	Suma	Litery	Ruch	Pkt	Suma
+AIEPHES	*wymiana* H	0	0	WĘCPONA	PACNĘ	32	32
+AIEPLES	SPALENIE/*premia*	70	70	WWF_OJI	CIF/II/FE	36	68
+BYEAAON	BASENY	24	94	WWA_OJE	POWIEWAJ/*premia*	83	151
+BESRAOK	BOKSERA/BA/*premia*	76	170	IWUSIŹL	ŹLI	30	181
+OMJZĆÓH	HOJ/OBA/JA	28	198	ŚWUSIŃL	WYSUŃ	56	237
+UMAZĆÓT	MAĆ/SPALENIEM	42	240	ŚODDICL	DOŚLE	22	259
+UIEZGÓT	GUZIE/EH	48	288	LZDDICK	DZIK/ID/KO	21	280
+ŁYZHOÓT	KÓŁ	20	308	LKADZCN	CZANKA	16	296
+EYZHOTT	HOT/IDO/KOT	21	329	LAADINC	NADALI/CI	30	326
+EYZGŻNT	TAŻ/FET	24	353	MRĄSYRC	MĄĆ/FETĄ	28	354
+EYZGON_	NIEZGODY/*premia*	63	416	YRRSYRC	RYSCY/AR	32	386
+TIMWZIŁ	WIŚ/DZIKI	16	432	RP R	REP	6	392
+T M ZIŁ	MIŁY	10	442	R	RE	3	395
+T Z	*litery*	-3	439		*litery*	3	398

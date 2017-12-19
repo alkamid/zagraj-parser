@@ -1,0 +1,50 @@
+Ten list zostal wysłany przez system gier on-line ZAGRAJ PL
+Zapis partii SCRABBLE
+Data: Sat Oct 08 23:34:42 CEST 2016
+Miejsce: Server ZAGRAJ.PL, plansza 3
+Typ: rankingowa
+Czas: 10 min
+Gracz 1: drstein
+Ranking: 100
+Gracz 2: alkamid
+Ranking: 106
+Wynik: 225: 425
+
+
+    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+  +-------------------------------+
+A |   P     W Y O R A N I E M   K |
+B |   E           E   Ę   L A T O |
+C |   R Ż E       W   Ć     C   M |
+D | O Z   Ś L I W I E   G Z Y   B |
+E | P       I     J             I |
+F | L   N I S Z       B           |
+G | U       Ó D     A U           |
+H | Ł     G W A S Z U             |
+I |       M   S     Ł   T         |
+J |       A   Z         R A D Ź   |
+K |       C       J E N A         |
+L |       H   E T A L O N Y       |
+M |     D Y C H O     R           |
+N |             P A K Ą           |
+O |           F I S               |
+  +-------------------------------+
+drstein	alkamid
+Litery	Ruch	Pkt	Suma	Litery	Ruch	Pkt	Suma
+DYTTFBA	*wymiana* ABFTTYD	0	0	CAGWHZS	GWASZ	20	20
+LIEZÓSŚ	LISÓW	20	20	CWAEHMJ	GMACH	22	42
+IIEZWIŚ	ŚLIWIE	24	44	OWIEYRJ	REWIJ	21	63
+YOHZDIC	DYCHO/GMACHY	35	79	OAINYWU	AU/GWASZU	15	78
+LSŻZZID	DASZ/ÓD	14	93	OAINYWE	WYORANIE/*premia*	60	138
+LŃŻEZIA	ŻE/EŚ	18	111	ĆNAOĘTY	NĘĆ	22	160
+LŃŹNZIA	*wymiana* ŹŃZ	0	111	_NAOETY	ETALONY/EH/TO/*premia*	75	235
+LIJNEIA	JE/JA/EL	9	120	RZPNMEI	PERZ/RŻE	17	252
+LIRNTIA	TRAN	10	130	BCPNMAI	*strata*	0	252
+LIŁNŁID	*wymiana* ŁDŁ	0	130	BCPNMAI	MAC/WYORANIEM	21	273
+LIZNTIŹ	LAT/EL	13	143	BKPNOMI	KOMBI/LATO	42	315
+AIZNFIŹ	NISZ/ZDASZ	14	157	YGPNAZK	GZY/MACY	19	334
+AIKDFIŹ	RADŹ	31	188	PĄPNALK	PAKĄ/TOP	25	359
+SIKOFIŃ	FIS/TOPI/AS	33	221	_ŁPNRLŁ	NORĄ/JENA	14	373
+BUKONIŃ	*strata*	0	221	_ŁPO LŁ	OPLUŁ/OZ	30	403
+BUKONIŃ	BU/AU	16	237	Ł	AUŁ	10	413
+KONIŃ	*litery*	-12	225		*litery*	12	425

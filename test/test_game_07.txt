@@ -1,0 +1,49 @@
+Ten list zostal wysłany przez system gier on-line ZAGRAJ PL
+Zapis partii SCRABBLE
+Data: Sat Oct 08 17:03:23 CEST 2016
+Miejsce: Server ZAGRAJ.PL, plansza 19
+Typ: rankingowa
+Czas: 10 min
+Gracz 1: alkamid
+Ranking: 106
+Gracz 2: jolac
+Ranking: 164
+Wynik: 329: 463
+
+
+    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+  +-------------------------------+
+A |             B I L E         S |
+B |                   T R O S K I |
+C |     D                       Ó |
+D |   P A Ź     J U N   M A S E Ł |
+E |     C   Z B A D A M Y   E Ś   |
+F |     H             E           |
+G |   W Y C I O S A   D           |
+H |       Z     U R N Y   H E R O |
+I |       E   O Ń     C       A   |
+J |       R Y Ż       Z       T   |
+K |       N           N A F T A   |
+L | W O Z I Ć       M I G I   N   |
+M |       L         I     K L O   |
+N |   W P I J Ę     Ł   L A   W   |
+O |               B E G     P Ą K |
+  +-------------------------------+
+alkamid	jolac
+Litery	Ruch	Pkt	Suma	Litery	Ruch	Pkt	Suma
+ZŁRLINL	*wymiana* LRŁZ	0	0	ACIOWWY	*wymiana* W	0	0
+RUNYINL	URNY	14	14	ACIOSWY	WYCIOSA/SU/AR/*premia*	69	69
+EIZRINL	CZERNILI/*premia*	72	86	NPCDJĘW	WPIJĘ	44	113
+ŻAADYSZ	RYŻ	18	104	NMCDEIZ	MEDYCZNI/*premia*	66	179
+YAADBSZ	ZBADAMY	48	152	DNSMCAH	DACHY	20	199
+ŹIATPSA	PAŹ	24	176	JNSMŁAU	JUN/JA/UD/NA	24	223
+FIATASA	NAFTA	20	196	AESMŁAM	MASEŁ/MY	26	249
+EI_ÓESA	SIÓŁ	30	226	WNIGRAM	MIGI/AG/FI	30	279
+EŃ__EPA	SUŃ	18	244	WNĄORAT	RATANOWĄ/*premia*	84	363
+EŚ__EPA	EŚ/SE/EŚ	14	258	HKEOOZL	HERO	27	390
+EK__EPA	PĄK	27	285	KKTSOZL	KLO/FIK	18	408
+EI__ELA	LA/FIKA	12	297	RKTSOZO	TROSKI	24	432
+EI__EOŁ	MIŁE	8	305	BGWZĆZO	BEG	21	453
+I __EO	OŃ/OŻ	14	319	WZĆZO	WOZIĆ	11	464
+I __E	BILE/ET	9	328	-	-	0	464
+*litery*	1	329	Z	*litery*	-1	463

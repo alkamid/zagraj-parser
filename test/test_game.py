@@ -34,7 +34,8 @@ def test_all_moves(test_game_text):
 
 def test_first_move(test_game_text):
 
-    for tgt in [test_game_text[0], test_game_text[2]]:
+    test_game_text.pop(1)
+    for tgt in test_game_text:
         g = Game(tgt)
         #mv_raw = g.moves_final[0]
         print(g.board_final)

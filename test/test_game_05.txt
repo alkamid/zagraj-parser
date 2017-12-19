@@ -1,0 +1,52 @@
+Ten list zostal wysłany przez system gier on-line ZAGRAJ PL
+Zapis partii SCRABBLE
+Data: Fri Jun 30 22:20:06 CEST 2017
+Miejsce: Server ZAGRAJ.PL, plansza 13
+Typ: turniejowa
+Czas: 7 min.
+Gracz 1: iawski
+Ranking: 85
+Gracz 2: alkamid
+Ranking: 100
+Wynik: 377: 274
+
+    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+  +-------------------------------+
+A |               O     W Y N O S |
+B |   G Z I K   K O S Z Y       I |
+C |       N     I           Z   C |
+D |     H U L A Ł       K   G     |
+E |       L I R Ę   T E R   R     |
+F |     S I N Ą       F A   A L   |
+G |   P I   I       M   T A J E Ń |
+H |       H O R   N A P A L E Ń   |
+I | B       W   W O Ź     D       |
+J | A D     E T   S       Y       |
+K | B A M   J E   Z       N       |
+L | O Ł Ó W   Z Ż Y Ć   C I E     |
+M |     D U P A           E Ś     |
+N |                               |
+O |                               |
+  +-------------------------------+
+iawski	alkamid
+Litery	Ruch	Pkt	Suma	Litery	Ruch	Pkt	Suma
+ZASNEYO	NOSZY	16	16	EŹWOTIW	WOŹ	21	21
+PALEEAM	MAŹ/NA	16	32	EĆŻOTIW	ŻYĆ	13	34
+PŃLEEAS	NAPALEŃ	17	49	ELZOTIW	TEZ/ZŻYĆ	22	56
+JATĄEYS	TAJE/TA/AL/JE/EŃ	31	80	ILNOEIW	LINIOWE/ET/*premia*	69	125
+IÓHĄRYS	SINĄ	18	98	AEUDOPI	DUPA/TEZA	21	146
+WÓHRRYK	HOR	8	106	NEDYONI	ALDYNIE	20	166
+WÓADRYK	ÓW/ÓD/WU	27	133	NRJAONZ	JE/LINIOWEJ	30	196
+IŁADRYK	KRATA	14	147	NRGAONZ	ZGRAJE	20	216
+IŁŚDFYA	FA	16	163	NLRIONU	NULI/UL/LI	27	243
+IŁŚDHYA	HULA	9	172	GKRIONZ	GZIK/INULI	22	265
+IŁŚDKYZ	EŚ	12	184	ĘORYONO	LIRĘ/ARĄ	16	281
+IŁŁDKYZ	KIŁĘ/HULAŁ	24	208	OOSYONO	OO/KO	9	290
+CSŁDCYZ	KOSZY	9	217	WESYONO	WYNOS/WY	27	317
+CMŁDCCA	ŁÓW	9	226	BEAEBPO	BABO/OŁÓW	20	337
+CMMDCCA	CI	3	229	TEIE_PI	PI/SI	7	344
+_MMDCCA	DAŁ/AD/BA	21	250	TE E_ I	CIE/EŚ	10	354
+_MM CC	AL/LEŃ	9	259	T E_ I	TER/EF	10	364
+MM CC	BAM/MÓD	15	274	_ I	SI	2	366
+M CC	SIC	4	278	_	TAJEŃ	7	373
+M C	*litery*	-4	274		*litery*	4	377

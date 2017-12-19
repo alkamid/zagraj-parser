@@ -26,7 +26,7 @@ class Move:
         self.next_rack = next_rack
         self.possible = []
         self.determine_move_type()
-        if self.move_type not in ['exchange', 'pass', 'end', 'challenge']:
+        if self.move_type not in ['exchange', 'pass', 'end', 'timeout', 'challenge']:
             self.find_possible_moves()
             if (len(self.possible) > 1 or
                             self.current_board.calculate_points(self.possible[0]) != self.points_raw):
@@ -59,6 +59,9 @@ class Move:
             self.value = 0
         elif pw == '*strata*':
             self.move_type = 'challenge'
+            self.value = 0
+        elif pw == '*koniec czasu*':
+            self.move_type = 'timeout'
             self.value = 0
         elif '*litery*' in [self.rack, pw]:
             self.move_type = 'end'

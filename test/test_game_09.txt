@@ -1,0 +1,48 @@
+Ten list zostal wysłany przez system gier on-line ZAGRAJ PL
+Zapis partii SCRABBLE
+Data: Sat Oct 08 23:56:42 CEST 2016
+Miejsce: Server ZAGRAJ.PL, plansza 3
+Typ: rankingowa
+Czas: 10 min
+Gracz 1: alkamid
+Ranking: 106
+Gracz 2: drstein
+Ranking: 100
+Wynik: 321: 410
+
+
+    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+  +-------------------------------+
+A |               P             R |
+B |               E         O K U |
+C |           Z   T       S T L I |
+D |       P I N D Y       P   E N |
+E |         M A         K L E Ć   |
+F | H     P A Ń           O       |
+G | I     O     Ó S       T       |
+H | T Y G L I   S I E W C Ą     C |
+I | Y   H E         Ś   W       W |
+J |     I Ż           F A K I R A |
+K |       C Z Y         N       Ł |
+L |       I       G   R E W     U |
+M |     J E N     Z Ł A J A N A   |
+N |         O D D A   Ź   Z       |
+O | B A R O M           Z Ę B O M |
+  +-------------------------------+
+alkamid	drstein
+Litery	Ruch	Pkt	Suma	Litery	Ruch	Pkt	Suma
+WICĄESŁ	SIEWCĄ	32	32	PLSTEOJ	SPLOTĄ	26	26
+ARASOÓŁ	ÓS/ÓS/SI	24	56	NAWGEAJ	CWANEJ	18	44
+ARAAONŁ	ŁAJANA	26	82	AWWGKAZ	GZA/ZŁAJANA	19	63
+RRKŹOK_	RAŹ/RE	31	113	ĆWWEKAŁ	KLEĆ	22	85
+IRKFOK_	FAKIR	22	135	CWWMUAŁ	CWAŁU/FAKIRA	50	135
+DEELOK_	KLEĆ	22	157	ĘŚWMABZ	WAZĘ/REW	32	167
+DJEDOI_	ODDA	10	167	HŚOMABR	BAROM/OM	30	197
+EJECNI_	JEN/NOM	14	181	HŚB_ZMO	ZĘBOM	36	233
+LOECŻI_	POLEŻCIE/*premia*	80	261	HŚY_IZP	EŚ	11	244
+UIINRYT	RUIN/KU/LI/EN	32	293	HIY_IZP	HI/HE/IŻ	20	264
+AZIGTYT	TYGLI/GHI	37	330	DYY_IZP	CZY	10	274
+AZHYIŃT	HITY	8	338	DMY_IAP	MA/PA	7	281
+AZNSOŃT	ZNAŃ/MA/PAŃ	49	387	DPY_IEP	PINDY/IMA	24	305
+SO T	OT/OKU/STLI	24	411	_ EP	PETY	15	320
+S	*litery*	-1	410		*litery*	1	321
